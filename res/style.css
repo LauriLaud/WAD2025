@@ -112,3 +112,73 @@ background: transparent;
   .right-gutter, .left-gutter { display:none; }
   .feed{max-width:680px;margin:0 auto}
 }
+
+.create-body{
+  background: #ffffff;
+  border-radius:12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  padding:30px;
+  margin-bottom:16px;
+  height: 20rem;
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+
+}
+
+.create-body form {
+	display: flex;
+	flex-direction: column;
+	align-items:left;
+	gap: 20px;
+}
+
+.form-row {
+	display: flex;
+	gap: 20px;
+}
+
+.form-row label {
+	width: 100px;
+	text-align: right;
+}
+
+#pbody {
+  width: 100%;
+  height: 150px;
+  resize: none;
+}
+
+#pfile {
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+input[type="file"]::file-selector-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #969696;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+  border-width: 1px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #7d7d7d;
+}
+
+.createButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1045c2;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.createButton:hover {
+  background-color: #1b5bf2;
+}

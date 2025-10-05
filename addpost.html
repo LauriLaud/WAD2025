@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add post</title>
+  <link rel="stylesheet" href="res/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav">
+      <a class="nav-item" href="index.html">Home</a>
+    </nav>
+    <div class="profile-icon" title="Profile">
+	<img src="res/img/Profile.png" alt="Profile picture" />
+	</div>
+  </header>
+
+  <main class="container">
+    <section class="left-gutter"></section>
+    <section>
+      <article class="createPost">
+        <div class="create-body">
+			<form>
+				<div class="form-row">
+					<label for="pbody">Post body</label>
+					<textarea id="pbody" name="pbody" rows="5" placeholder="Write your post..."></textarea>
+				</div>
+				<div class="form-row">
+					<label for="pfile">Select file</label>
+					<input type="file" id="pfile" name="pfile"><br><br>
+				</div>
+			</form>
+			<a href="index.html" class="createButton">Create post</a>
+        </div>
+      </article>
+    </section>
+
+    <aside class="right-gutter"></aside>
+  </main>
+</body>
+</html>
