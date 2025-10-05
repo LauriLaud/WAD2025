@@ -182,3 +182,70 @@ input[type="file"]::file-selector-button:hover {
 .createButton:hover {
   background-color: #1b5bf2;
 }
+
+.login-body {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  padding: 30px;
+  margin-bottom: 16px;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       
+  justify-content: center;  
+  gap: 10px;           
+}
+.login-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.login-link {
+  text-decoration: none;
+  color: rgb(0, 109, 177);
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.login-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.login-body form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.login-input {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.login-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1045c2;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #1b5bf2;
+}
+
