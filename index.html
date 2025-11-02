@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" >
-  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
-  <link rel="stylesheet" href="res/style.css" >
+  <link rel="stylesheet" href="res/style.css">
 </head>
 <body>
   <header class="site-header">
@@ -13,80 +13,17 @@
       <a class="nav-item" href="addpost.html">Add Post</a>
     </nav>
     <div class="profile-icon" title="Profile">
-	  <a href="login.html">
-		 <img src="res/img/Profile.png" alt="Profile picture">
-	  </a>
-	</div>
+      <a href="login.html">
+        <img src="res/img/Profile.png" alt="Profile picture">
+      </a>
+    </div>
   </header>
 
   <main class="container">
     <section class="left-gutter"></section>
 
-    <section class="feed">
-      <article class="post">
-        <header class="post-header">
-          <div class="profile-icon">
-		  <img src="res/img/Profile.png" alt="Profile picture" >
-		  </div>
-        </header>
-        <div class="post-image">
-          <img src="res/img/Tartu2024.jpg" alt="town square" >
-        </div>
-        <div class="post-body">
-          <p class="post-text">Tartu 2022</p>
-        </div>
-      </article>
-
-      <article class="post">
-        <header class="post-header">
-          <div class="profile-icon">
-		  <img src="res/img/Profile.png" alt="Profile picture" >
-		  </div>
-        </header>
-        <div class="post-body">
-          <p>Anyone knows in which room is the lab today?</p>
-        </div>
-      </article>
-
-      <article class="post">
-        <header class="post-header">
-          <div class="profile-icon">
-		  <img src="res/img/Profile.png" alt="Profile picture" >
-		  </div>
-        </header>
-        <div class="post-image">
-          <img src="res/img/Delta.jpg" alt="delta building" >
-        </div>
-        <div class="post-body">
-          <p>University of Tartu Delta Centre</p>
-        </div>
-      </article>
-
-      <article class="post">
-        <header class="post-header">
-          <div class="profile-icon">
-		  <img src="res/img/Profile.png" alt="Profile picture" >
-		  </div>
-        </header>
-        <div class="post-body">
-          <p>WAD2025 homework 1 due date is 5 October 23.59</p>
-        </div>
-      </article>
-
-      <article class="post">
-        <header class="post-header">
-          <div class="profile-icon">
-		  <img src="res/img/Profile.png" alt="Profile picture" >
-		  </div>
-        </header>
-        <div class="post-image">
-          <img src="res/img/Main.jpg" alt="main building" >
-        </div>
-        <div class="post-body">
-          <p>Main building of Tartu University</p>
-        </div>
-      </article>
-    </section>
+    <!-- Posts will be injected here -->
+    <section class="feed" id="feed"></section>
 
     <aside class="right-gutter"></aside>
   </main>
@@ -94,5 +31,82 @@
   <footer class="site-footer" id="footer">
     Group AL
   </footer>
+
+  <script>
+    async function loadPosts() {
+      const feedContainer = document.getElementById('feed');
+      feedContainer.innerHTML = "<p>Loading posts...</p>";
+
+      try {
+        //const response = await fetch('https://api.jsonsilo.com/public/f543ccd5-2fd6-444a-a040-dd52012ec4c5');
+		const response = await fetch('res/posts.json');
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        const data = await response.json();
+        const posts = data.posts || [];
+        feedContainer.innerHTML = "";
+
+        if (posts.length === 0) {
+          feedContainer.innerHTML = "<p>No posts found.</p>";
+          return;
+        }
+
+        posts.forEach(post => {
+          const article = document.createElement('article');
+          article.classList.add('post');
+
+          const header = document.createElement('header');
+          header.classList.add('post-header');
+
+          const profileDiv = document.createElement('div');
+          profileDiv.classList.add('profile-icon');
+          const profileImg = document.createElement('img');
+          profileImg.src = "res/img/Profile.png";
+          profileImg.alt = "Profile picture";
+          profileDiv.appendChild(profileImg);
+
+          const authorName = document.createElement('span');
+          authorName.textContent = post.author || "Unknown";
+          authorName.style.marginLeft = "8px";
+          authorName.style.fontWeight = "bold";
+
+          header.appendChild(profileDiv);
+          header.appendChild(authorName);
+          article.appendChild(header);
+
+          if (post.image) {
+            const imageDiv = document.createElement('div');
+            imageDiv.classList.add('post-image');
+            const img = document.createElement('img');
+            img.src = post.image;
+            img.alt = post.title || "Post image";
+            imageDiv.appendChild(img);
+            article.appendChild(imageDiv);
+          }
+
+          const bodyDiv = document.createElement('div');
+          bodyDiv.classList.add('post-body');
+
+          const title = document.createElement('h3');
+          title.textContent = post.title || "";
+          title.style.marginBottom = "4px";
+
+          const content = document.createElement('p');
+          content.textContent = post.content || "";
+
+          bodyDiv.appendChild(title);
+          bodyDiv.appendChild(content);
+          article.appendChild(bodyDiv);
+
+          feedContainer.appendChild(article);
+        });
+
+      } catch (error) {
+        console.error(error);
+        feedContainer.innerHTML = "<p>Failed to load posts. Please try again later.</p>";
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPosts);
+  </script>
 </body>
 </html>
