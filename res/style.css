@@ -245,3 +245,46 @@ input[type="file"]::file-selector-button:hover {
   background-color: #1b5bf2;
 }
 
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  min-width: 180px;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.dropdown-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #d0e7ff;
+  cursor: pointer;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
