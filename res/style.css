@@ -78,10 +78,6 @@ body{
   max-height:360px;
 }
 
-.post-image ~ .post-body {
-  background-color: #f3f4f6;
-}
-
 .post-body p {
   color: #333;
   margin: 8px 0;
@@ -288,3 +284,11 @@ input[type="file"]::file-selector-button:hover {
   display: flex;
 }
 
+.post-body h3 {
+  margin-bottom: 4px;
+}
+
+.post-header span {
+  margin-left: 8px;
+  font-weight: bold;
+}

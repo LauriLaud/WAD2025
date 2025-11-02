@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Index</title>
+  <title>Home</title>
   <link rel="stylesheet" href="res/style.css">
+  <link rel="icon" href="res/img/icon.png" type="image/png">
 </head>
 <body>
   <header class="site-header">
@@ -71,8 +72,6 @@
 
           const authorName = document.createElement('span');
           authorName.textContent = post.author || "Unknown";
-          authorName.style.marginLeft = "8px";
-          authorName.style.fontWeight = "bold";
 
           header.appendChild(profileDiv);
           header.appendChild(authorName);
@@ -93,7 +92,6 @@
 
           const title = document.createElement('h3');
           title.textContent = post.title || "";
-          title.style.marginBottom = "4px";
 
           const content = document.createElement('p');
           content.textContent = post.content || "";

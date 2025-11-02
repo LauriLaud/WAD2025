@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Add post</title>
   <link rel="stylesheet" href="res/style.css" />
+  <link rel="icon" href="res/img/icon.png" type="image/png">
 </head>
 <body>
   <header class="site-header">
     <nav class="main-nav">
       <a class="nav-item" href="index.html">Home</a>
+      <a class="nav-item" href="addpost.html">Add Post</a>
     </nav>
-    <div class="profile-icon" title="Profile">
-		<a href="login.html">
-		 <img src="res/img/Profile.png" alt="Profile picture">
-	  	</a>
-	</div>
+    <div class="profile-container">
+      <div class="profile-icon" id="profileBtn" title="Profile">
+        <img src="res/img/Profile.png" alt="Profile picture">
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <div class="dropdown-item">John Doe</div>
+        <div class="dropdown-item">john.doe@ut.ee</div>
+        <div class="dropdown-item">Logout</div>
+      </div>
+    </div>
   </header>
 
   <main class="container">
@@ -40,5 +47,23 @@
 
     <aside class="right-gutter"></aside>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const profileBtn = document.getElementById('profileBtn');
+      const dropdown = document.getElementById('dropdownMenu');
+
+      profileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
