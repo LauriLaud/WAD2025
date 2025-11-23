@@ -40,12 +40,14 @@
         :post="post"
       />
     </section>
-
     <aside class="right-gutter"></aside>
   </main>
 
-  <footer class="site-footer">
+  <section class="reset-section">
     <button class="reset-btn" @click="resetAllLikes">Reset All Likes</button>
+  </section>
+
+  <footer class="site-footer">
     <p class="footer-text">©2025 Group AL</p>
   </footer>
 </div>
@@ -111,19 +113,15 @@ const PostItem = {
       <div class="post-body">
         <h3>{{ post.title }}</h3>
         <p>{{ post.content }}</p>
-		
-		    <div class="like-row">
-          <button class="like-btn" @click="likePost">
-            🖒
-          </button>
 
-          <span class="like-count">
-            {{ post.likes }} likes
-          </span>
+        <div class="like-row">
+          <button class="like-btn" @click="likePost">🖒</button>
+          <span class="like-count">{{ post.likes }} likes</span>
+        </div>
       </div>
+
     </article>
-  `
-  ,
+  `,
 
   methods: {
     likePost() {

@@ -28,24 +28,38 @@ body{
   gap: 8px;
 }
 
-.site-footer .reset-btn {
-  padding: 10px 20px;
+.footer-text {
+  color: #111;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.reset-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.reset-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 22px;
   background-color: #1045c2;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.site-footer .reset-btn:hover {
+.reset-btn:hover {
   background-color: #1b5bf2;
 }
 
-.footer-text {
-  color: #111;
-  font-size: 0.9rem;
-  margin: 0;
+.reset-btn:active {
+  transform: translateY(1px);
 }
 
 .main-nav{
