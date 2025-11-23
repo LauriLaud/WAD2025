@@ -292,3 +292,27 @@ input[type="file"]::file-selector-button:hover {
   margin-left: 8px;
   font-weight: bold;
 }
+
+.like-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.like-btn:hover {
+  transform: scale(1.5);
+}
+
+.like-count {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+}
