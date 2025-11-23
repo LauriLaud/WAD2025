@@ -15,6 +15,39 @@ body{
   position:sticky;
   top:0;
 }
+
+.site-footer {
+  padding: 18px;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer .reset-btn {
+  padding: 10px 20px;
+  background-color: #1045c2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.site-footer .reset-btn:hover {
+  background-color: #1b5bf2;
+}
+
+.footer-text {
+  color: #111;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 .main-nav{
 	display:flex; 
 	gap:8px
