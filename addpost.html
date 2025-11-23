@@ -12,15 +12,18 @@
     <nav class="main-nav">
       <a class="nav-item" href="index.html">Home</a>
       <a class="nav-item" href="addpost.html">Add Post</a>
+      <a class="nav-item" href="signup.html">Sign up</a>
     </nav>
+
     <div class="profile-container">
-      <div class="profile-icon" id="profileBtn" title="Profile">
+      <div class="profile-icon" @click="toggleDropdown">
         <img src="res/img/Profile.png" alt="Profile picture">
       </div>
-      <div class="dropdown-menu" id="dropdownMenu">
+
+      <div class="dropdown-menu" :class="{ show: dropdownOpen }">
         <div class="dropdown-item">John Doe</div>
         <div class="dropdown-item">john.doe@ut.ee</div>
-        <div class="dropdown-item">Logout</div>
+        <a class="dropdown-item" href="login.html">Logout</a>
       </div>
     </div>
   </header>
