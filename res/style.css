@@ -349,3 +349,68 @@ input[type="file"]::file-selector-button:hover {
   font-weight: bold;
   color: #444;
 }
+
+.signup-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.signup-field label {
+  width: 80px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.signup-input {
+  flex: 1;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.signup-body {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  padding: 30px;
+  margin-bottom: 16px;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       
+  justify-content: center;  
+  gap: 10px;           
+}
+
+.signup-body form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.signup-button {
+  border-radius: 25px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1045c2;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+.signup-button:hover {
+  background-color: #1b5bf2;
+}

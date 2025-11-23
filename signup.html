@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="res/style.css">
+    <link rel="icon" href="res/img/icon.png" type="image/png">
+</head>
+<body>
+    <header class="site-header">
+    <nav class="main-nav">
+      <a class="nav-item" href="index.html">Home</a>
+      <a class="nav-item" href="addpost.html">Add Post</a>
+      <button class="reset-btn" @click="resetAllLikes">Reset All Likes</button>
+    </nav>
+
+    <div class="profile-container">
+      <div class="profile-icon" @click="toggleDropdown">
+        <img src="res/img/Profile.png" alt="Profile picture">
+      </div>
+
+      <div class="dropdown-menu" :class="{ show: dropdownOpen }">
+        <div class="dropdown-item">John Doe</div>
+        <div class="dropdown-item">john.doe@ut.ee</div>
+        <a class="dropdown-item" href="login.html">Logout</a>
+      </div>
+    </div>
+  </header>
+
+    <main class="container">
+        <section class="left-gutter"></section>
+        <section>
+            <article>
+                <div class="signup-body">
+                    <h1>Sign up</h1>
+                    <form id="signupForm" action="index.html" method="get">
+                        <div class="signup-field">
+                            <label>Email</label>
+                            <input type="email" class="signup-input" required placeholder="Email">
+                        </div>
+
+                        <div class="signup-field">
+                            <label>Password</label>
+                            <input type="password" id="password" class="signup-input" required placeholder="Password">
+                        </div>
+
+                        <p id="errorMessage" style="color:red; display:none;"></p>
+                        <button type="submit" class="signup-button">Sign up</button>
+                    </form>
+                </div>
+            </article>
+        </section>
+        <aside class="right-gutter"></aside>
+    </main>
+    
+    <script>
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+        const password = document.getElementById("password").value;
+        const errors = [];
+
+        if (password.length < 8 || password.length > 14) {
+            errors.push("Length should be 8 to 15 characters");
+        }
+        if (!/^[A-Z]/.test(password)) {
+            errors.push("It should start with an uppercase alphabet");
+        }
+        if (!/[A-Z]/.test(password)) {
+            errors.push("Includes at least one uppercase alphabet character");
+        }
+        if ((password.match(/[a-z]/g) || []).length < 2) {
+            errors.push("Includes at least two lowercase alphabet characters");
+        }
+        if (!/[0-9]/.test(password)) {
+            errors.push("Includes at least one numeric value");
+        }
+        if (!/_/.test(password)) {
+            errors.push('It should include the character "_"');
+        }
+
+        const errorMessage = document.getElementById("errorMessage");
+
+        if (errors.length > 0) {
+            e.preventDefault();
+            errorMessage.style.display = "block";
+            errorMessage.textContent = "The password is not valid - " + errors.join(", ");
+        } else {
+            errorMessage.style.display = "none";
+        }
+    });
+    </script>
+</body>
+</html>
