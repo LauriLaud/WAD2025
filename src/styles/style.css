@@ -11,6 +11,7 @@ html,body{
 main {
   flex: 1;
 }
+
 .site-header{
   display:flex;
   align-items:center;
@@ -433,4 +434,10 @@ input[type="file"]::file-selector-button:hover {
 
 .signup-button:hover {
   background-color: #1b5bf2;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
