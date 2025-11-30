@@ -15,7 +15,7 @@
 <div class="dropdown-menu" :class="{ show: dropdownOpen }">
 <div class="dropdown-item">John Doe</div>
 <div class="dropdown-item">john.doe@ut.ee</div>
-<a class="dropdown-item" href="#" @click="logout">Logout</a>
+<div class="dropdown-item">Logout</div>
 </div>
 </div>
 </header>
