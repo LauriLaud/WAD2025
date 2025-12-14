@@ -5,6 +5,7 @@ import LoginView from '../views/LoginView.vue';
 import ContactView from '../views/ContactView.vue';
 import iconImg from "@/assets/img/icon.png";
 import AddPostView from "@/views/AddPostView.vue";
+import APostView from "@/views/APostView.vue";
 
 const routes = [
 {
@@ -48,6 +49,14 @@ meta: {
   path: "/add",
   name: "add-post",
   component: AddPostView
+},
+{
+  path: "/post",
+  name: "a-post",
+  component: APostView,
+  meta: {
+    title: "A Post"
+  }
 }
 ];
 
