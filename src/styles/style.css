@@ -441,3 +441,42 @@ input[type="file"]::file-selector-button:hover {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.addpost-body {
+  max-width: 600px;
+}
+
+.addpost-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.textarea-field {
+  align-items: flex-start;
+}
+
+.auto-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+.reset-btn.secondary {
+  background-color: #777;
+}
+
+.reset-btn.secondary:hover {
+  background-color: #666;
+}
+
+.feed-actions {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.feed-actions .reset-btn {
+  margin: 0;
+}

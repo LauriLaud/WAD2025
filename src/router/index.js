@@ -4,6 +4,7 @@ import SignupView from "@/views/SignupView.vue";
 import LoginView from '../views/LoginView.vue';
 import ContactView from '../views/ContactView.vue';
 import iconImg from "@/assets/img/icon.png";
+import AddPostView from "@/views/AddPostView.vue";
 
 const routes = [
 {
@@ -42,6 +43,11 @@ meta: {
       title: "Contact Us",
       icon: iconImg
     }
+},
+{
+  path: "/add",
+  name: "add-post",
+  component: AddPostView
 }
 ];
 
@@ -52,7 +58,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // 1. Handle Document Title and Favicon (Your existing logic)
   document.title = to.meta.title || "PostIt";
   let favicon = document.querySelector("link[rel='icon']");
   if (!favicon) {
@@ -62,15 +67,12 @@ router.beforeEach((to, from, next) => {
   }
   favicon.href = to.meta.icon || iconImg;
 
-  // 2. Handle Authentication Guard (New logic)
   const authRequired = to.matched.some(record => record.meta.requiresAuth);
-  const isAuthenticated = localStorage.getItem("token"); // Check if JWT exists
+  const isAuthenticated = localStorage.getItem("token");
 
   if (authRequired && !isAuthenticated) {
-    // If page needs auth but user has no token, redirect to Login
     next({ name: "login" });
   } else {
-    // Otherwise, allow navigation
     next();
   }
 });
