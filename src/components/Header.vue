@@ -2,7 +2,7 @@
 <header class="site-header">
 <nav class="main-nav">
 <router-link class="nav-item" to="/">Home</router-link>
-<router-link class="nav-item" to="/signup">Sign Up</router-link>
+<router-link class="nav-item" to="/contact">Contact Us</router-link>
 </nav>
 
 
@@ -15,7 +15,7 @@
 <div class="dropdown-menu" :class="{ show: dropdownOpen }">
 <div class="dropdown-item">John Doe</div>
 <div class="dropdown-item">john.doe@ut.ee</div>
-<div class="dropdown-item">Logout</div>
+<div class="dropdown-item" @click="logout">Logout</div>
 </div>
 </div>
 </header>
@@ -47,7 +47,9 @@ this.dropdownOpen = false;
 }
 },
 logout() {
-console.log("logout clicked");
+  localStorage.removeItem("token");
+  this.$router.push('/login');
+  this.dropdownOpen = false;
 }
 }
 };
