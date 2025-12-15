@@ -15,7 +15,7 @@ component: HomeView,
 meta: {
       title: "Home",
       icon: iconImg,
-	  requiresAuth: true
+	    requiresAuth: true
     }
 },
 {
@@ -51,11 +51,12 @@ meta: {
   component: AddPostView
 },
 {
-  path: "/post",
+  path: "/post/:id",
   name: "a-post",
   component: APostView,
   meta: {
-    title: "A Post"
+    title: "A Post",
+    requiresAuth: true
   }
 }
 ];
@@ -66,7 +67,7 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title || "PostIt";
   let favicon = document.querySelector("link[rel='icon']");
   if (!favicon) {
@@ -77,14 +78,28 @@ router.beforeEach((to, from, next) => {
   favicon.href = to.meta.icon || iconImg;
 
   const authRequired = to.matched.some(record => record.meta.requiresAuth);
-  const isAuthenticated = localStorage.getItem("token");
 
-  if (authRequired && !isAuthenticated) {
+  if (!authRequired) {
+    return next();
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/auth/authenticate", {
+      method: "GET",
+      credentials: "include"
+    });
+    const data = await res.json();
+
+    if (data.authenticated) {
+      next();
+    } else {
+      next({ name: "login" });
+    }
+  } catch {
     next({ name: "login" });
-  } else {
-    next();
   }
 });
+
 
 
 

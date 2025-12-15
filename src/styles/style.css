@@ -135,16 +135,13 @@ main {
 .post-body p {
   color: #333;
   margin: 8px 0;
+  padding-left: 10px;
 }
 
 .post-body > p {
   font-style: italic;
 }
 
-.post-body::first-letter {
-  font-size: 1.3em;
-  font-weight: bold;
-}
 
 #footer{
   padding:18px;

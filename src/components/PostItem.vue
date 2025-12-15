@@ -1,42 +1,44 @@
 <template>
-<article class="post">
-<header class="post-header">
-<div class="profile-icon">
-<img src="@/assets/img/Profile.png" />
-</div>
-<span>{{ post.author || "Unknown" }}</span>
-</header>
+  <article class="post" @click="goToPost">
+    <header class="post-header">
+      <span>{{ formattedDate }}</span>
+    </header>
 
+    <div v-if="post.image" class="post-image">
+      <img :src="post.image" alt="Post image" />
+    </div>
 
-<div v-if="post.image" class="post-image">
-<img :src="post.image" :alt="post.title" />
-</div>
-
-
-<div class="post-body">
-<h3>{{ post.title }}</h3>
-<p>{{ post.content }}</p>
-
-
-<div class="like-row">
-<button class="like-btn" @click="likePost">🖒</button>
-<span class="like-count">{{ post.likes }} likes</span>
-</div>
-</div>
-</article>
+    <div class="post-body">
+      <p>{{ post.content }}</p>
+    </div>
+  </article>
 </template>
-
 
 <script>
 export default {
-name: "PostItem",
-props: {
-post: Object
-},
-methods: {
-likePost() {
-this.$store.dispatch("likePost", this.post.id);
-}
-}
+  name: "PostItem",
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    formattedDate() {
+      if (!this.post.created_at) return "Unknown";
+
+      const date = new Date(this.post.created_at);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+  },
+  methods: {
+    goToPost() {
+        this.$router.push(`/post/${this.post.id}`);
+    }
+  }
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <div class="signup-body"> <h2>Login</h2>
+  <div class="signup-body">
+    <h2>Login</h2>
     <form @submit.prevent="login">
       <div class="signup-field">
         <label for="email">Email</label>
@@ -9,6 +10,9 @@
         <label for="password">Password</label>
         <input class="signup-input" type="password" id="password" v-model="password" required />
       </div>
+
+      <p v-if="errorMessage" style="color:red;">{{ errorMessage }}</p>
+
       <button class="reset-btn" type="submit">Login</button>
     </form>
 
@@ -27,25 +31,32 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     };
   },
   methods: {
-    login() {
-      // TODO: Replace with actual fetch to backend
-      console.log("Logging in...", this.email);
-      // Mocking success:
-      localStorage.setItem("token", "sample-jwt-token");
-      this.$router.push("/");
+    async login() {
+      try {
+        const res = await fetch("http://localhost:3000/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include", // important for cookies
+          body: JSON.stringify({ email: this.email, password: this.password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          this.errorMessage = data.error || "Login failed";
+          return;
+        }
+
+        this.$router.push("/");
+      } catch (err) {
+        this.errorMessage = "Login failed";
+      }
     }
   }
 };
 </script>
-
-<style scoped>
-.signup-body {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 30px;
-}
-</style>

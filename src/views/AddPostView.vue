@@ -25,3 +25,38 @@
     <aside class="right-gutter"></aside>
   </main>
 </template>
+
+<script>
+export default {
+  name: "AddPostView",
+  data() {
+    return {
+      content: ""
+    };
+  },
+  methods: {
+    async addPost() {
+      if (!this.content.trim()) {
+        alert("Post content cannot be empty");
+        return;
+      }
+
+      try {
+        // Dispatch Vuex action to add post
+        await this.$store.dispatch("addPost", {
+          content: this.content
+        });
+
+        // Clear textarea
+        this.content = "";
+
+        // Redirect back to Home
+        this.$router.push("/");
+      } catch (err) {
+        console.error("Failed to add post:", err);
+        alert("Failed to add post");
+      }
+    }
+  }
+};
+</script>

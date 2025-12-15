@@ -17,8 +17,8 @@
         Add Post
       </button>
 
-      <button class="reset-btn" @click="resetAllLikes">
-        Reset All Likes
+      <button class="reset-btn" @click="deleteAllPosts">
+        Delete all
       </button>
     </div>
   </main>
@@ -41,8 +41,8 @@ export default {
     this.$store.dispatch("fetchPosts");
   },
   methods: {
-    resetAllLikes() {
-      this.$store.dispatch("resetLikes");
+    deleteAllPosts() {
+      this.$store.dispatch("deleteAllPosts");
     },
     goToAddPost() {
       this.$router.push("/add");

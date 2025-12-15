@@ -13,8 +13,6 @@
 
 
 <div class="dropdown-menu" :class="{ show: dropdownOpen }">
-<div class="dropdown-item">John Doe</div>
-<div class="dropdown-item">john.doe@ut.ee</div>
 <div class="dropdown-item" @click="logout">Logout</div>
 </div>
 </div>
@@ -37,20 +35,30 @@ beforeUnmount() {
 document.removeEventListener("click", this.closeOnOutsideClick);
 },
 methods: {
-toggleDropdown() {
-this.dropdownOpen = !this.dropdownOpen;
-},
-closeOnOutsideClick(e) {
-const profile = this.$el.querySelector(".profile-container");
-if (!profile.contains(e.target)) {
-this.dropdownOpen = false;
-}
-},
-logout() {
-  localStorage.removeItem("token");
-  this.$router.push('/login');
-  this.dropdownOpen = false;
-}
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  },
+  closeOnOutsideClick(e) {
+    const profile = this.$el.querySelector(".profile-container");
+    if (!profile.contains(e.target)) {
+      this.dropdownOpen = false;
+    }
+  },
+  async logout() {
+    try {
+      // Call backend to clear the JWT cookie
+      await fetch("http://localhost:3000/auth/logout", {
+        method: "GET",
+        credentials: "include" // important to send the cookie
+      });
+
+      // Redirect to login page
+      this.$router.push("/login");
+      this.dropdownOpen = false;
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  }
 }
 };
 </script>
