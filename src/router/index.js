@@ -48,7 +48,12 @@ meta: {
 {
   path: "/add",
   name: "add-post",
-  component: AddPostView
+  component: AddPostView,
+  meta: {
+      title: "Add post",
+      icon: iconImg,
+	    requiresAuth: true
+    }
 },
 {
   path: "/post/:id",
